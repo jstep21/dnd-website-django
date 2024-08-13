@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% block title %}D&D Spellbook{% endblock %}
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<h1>{{ class_name.title }}</h1>
+<table class="">
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Ability Score Bonus</th>
+      <th>Proficiency Bonus</th>
+      <th>Features</th>
+      {% if class_resources|length > 0 and class_resources.0.spellcasting.cantrips_known %}
+        <th>Cantrips Known</th>
+      {% endif %}
+      {% if class_resources|length > 0 and class_resources.0.spellcasting.spells_known %}
+        <th>Spells Known</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for level in class_resources %}
+      <tr>
+        <td>{{ level.level }}</td>
+        <td>{{ level.ability_score_bonuses }}</td>
+        <td>{{ level.prof_bonus }}</td>
+        <td>
+          <p>
+            {% for feature in level.features %}
+              <span>{{ feature.name }}</span><br>
+            {% endfor %}
+          </p>
+        </td>
+        {% if level.spellcasting %}
+          {% if not level.spellcasting.cantrips_known %}
+            <td>{{ level.spellcasting.cantrips_known }}</td>
+          {% endif %}
+          {% if level.spellcasting.spells_known %}
+            <td>{{ level.spellcasting.spells_known }}</td>
+          {% endif %}
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

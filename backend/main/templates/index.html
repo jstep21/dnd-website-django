@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Spellbook Home{% endblock %}
+
+{% block content %}
+
+<!-- Intro -->
+    <section id="intro" class="wrapper style1">
+        <div class="title">{{ spells_data.count }} Total Spells</div>
+        <div class="container">
+            <p class="style2">
+                Here you can search for any <br class="mobile-hide" />
+                spell in D&D 5e
+            </p>
+            <p class="style1">And see it's data!</p>
+                <form method="GET" action="{% url 'search_spells' %}">
+                    <input type="text" placeholder="search spells" id="search_spell" name="search_spell" value="{{ request.GET.search_spell }}">
+                    <br/><br/>
+                    <input type="submit" value="Submit">
+                </form>
+
+                <p class="style1">Or you can
+                    <strong><a href="{% url 'list_spells' %}">view all spells</a></strong></p>
+        </div>
+    </section>
+
+<!-- Main -->
+    <section id="main" class="wrapper style2">
+        <div class="title">By Class</div>
+        <div class="container">
+
+        <!-- Image -->
+<!--                <a href="#" class="image featured">-->
+<!--                    <img src="images/pic01.jpg" alt="" />-->
+<!--                </a>-->
+
+        <!-- Features -->
+            <section id="features">
+                <header class="style1">
+                    <h2>List of classes</h2>
+                    <p>Find spell information for any class!</p>
+                </header>
+                <div class="feature-list" >
+                    <div class="row">
+                    {% for class in classes %}
+                        <div class="col-6 col-12-medium">
+                            <section>
+                                <h3
+                                        class="fab fa-d-and-d"><a
+                                        href="{% url 'class_info' class_name=class.0 %}">{{class.0|upper }}</a>
+                                </h3>
+                                <p>{{ class.1 }}</p>
+                            </section>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                <ul class="actions special">
+                    <li><a href="#" class="button style1 large">Get Started</a></li>
+                    <li><a href="#" class="button style2 large">More Info</a></li>
+                </ul>
+            </section>
+
+        </div>
+    </section>
+
+{% endblock %}
