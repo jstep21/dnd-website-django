@@ -2989,3 +2989,30 @@ input, select, textarea {
 						}
 
 	}
+
+#content {
+	width:auto;
+	box-shadow: none;
+}
+
+/* .primary-content {
+	position: static;
+	float: none;
+	width: auto;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	max-width: none !important;
+	min-width: 0;
+}
+
+.secondary-content {
+	position: static;
+	float: none;
+	max-width: 300px;
+	min-width: 300px;
+	margin-right: 30px;
+	margin-left: 0;
+	padding: 0;
+
+} */

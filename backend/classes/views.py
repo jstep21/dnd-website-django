@@ -13,8 +13,12 @@ def class_info(request, class_name):
     if response.status_code == 200:
         class_resources = response.json()
         
+    # print(class_resources)
+    levels = range(1, 10)
+        
     return render(request, 'class-info.html', {
         'class_name': class_name,
-        'class_resources': class_resources
+        'class_resources': class_resources,
+        'levels': levels
     })
         
