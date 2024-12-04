@@ -13,7 +13,6 @@
     <p>sidebar</p>
 
   </aside>
-
   <main class="bd-main order-1">
     <h1>{{ class_name.title }}</h1>
     <section class="secondary-content" role="complementary">
@@ -66,7 +65,6 @@
                 {% endif %}
                 {% for level in levels %}
                   {% with key="spell_slots_level_"|generate_key:level %}
-
                     {% if class_resources.0.spellcasting|dict_key_exists:key %}
                       {% if class_level.spellcasting|get_item:key == 0 %}
                       <td>-</td>
